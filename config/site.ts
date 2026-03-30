@@ -7,7 +7,7 @@
 
 export const siteConfig = {
   /** Nombre visible en la UI, emails y metadata */
-  name: "Nombre de la Inmobiliaria",
+  name: "Almada & Cía",
 
   /** Descripción corta para SEO y metadata */
   description: "Gestión de contratos y propiedades de alquiler",
