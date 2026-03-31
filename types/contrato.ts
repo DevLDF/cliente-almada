@@ -30,6 +30,7 @@ export const emptyPersona = (): Persona => ({
   domicilio: "",
   ciudad: "Las Flores",
   provincia: "Buenos Aires",
+  telefono: "",
 });
 
 /** Fábrica de contrato vacío con defaults por tipo */

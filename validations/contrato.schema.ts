@@ -10,6 +10,7 @@ export const personaSchema = z.object({
   domicilio: z.string().optional().default(""),
   ciudad: z.string().optional().default("Las Flores"),
   provincia: z.string().optional().default("Buenos Aires"),
+  telefono: z.string().optional().default(""),
 });
 
 export const garanteSchema = personaSchema.extend({

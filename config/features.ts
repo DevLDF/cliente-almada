@@ -36,7 +36,7 @@ export const features = {
   /** Integración con Stripe para pagos / suscripciones */
   hasBilling: false,
   /** Reportes y analytics del negocio */
-  hasReports: false,
+  hasReports: true,
   /** Notificaciones por email (Resend) */
   hasEmailNotifications: false,
 } as const;
