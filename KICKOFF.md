@@ -161,6 +161,14 @@ export const features = {
 
 ---
 
+## Protocolo de trabajo con Claude
+
+Antes de iniciar cualquier feature no trivial, Claude **entra en plan mode**, explora el código existente, y hace todas las preguntas necesarias. Las decisiones se registran en `PLAN.md` y este `KICKOFF.md` antes de escribir una sola línea de código.
+
+**Regla:** Si hay ambigüedad sobre producto, arquitectura o infraestructura → plan mode primero. No asumir, no improvisar.
+
+---
+
 ## Tu tarea
 
 Analizá las transcripciones y producí un plan con estas secciones:

@@ -49,6 +49,7 @@ export const condicionesSchema = z.object({
   ajuste: z.object({
     tipo: z.enum(["trimestral", "semestral", "cuatrimestral", "mensual"]).default("trimestral"),
     indice: z.enum(["IPC", "ICL"]).default("IPC"),
+    porcentaje: z.number().min(0).max(100).default(0), // % manual — futuro: API externa
     primerAjusteMes: z.number().optional(),
   }),
   pagoDia: z.number().int().min(1).max(28).default(5),
