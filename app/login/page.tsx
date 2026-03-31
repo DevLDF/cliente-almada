@@ -4,6 +4,7 @@ import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
 import { siteConfig } from "@/config/site";
+import { Mail, Lock, ArrowRight } from "lucide-react";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -26,51 +27,129 @@ export default function LoginPage() {
       return;
     }
 
-    router.push("/contratos");
+    router.push("/");
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 px-4">
+    <div
+      className="min-h-screen flex items-center justify-center px-4"
+      style={{ background: "var(--color-surface)" }}
+    >
       <div className="w-full max-w-sm">
+        {/* Marca */}
         <div className="text-center mb-8">
-          <h1 className="text-2xl font-bold text-gray-900">{siteConfig.name}</h1>
-          <p className="text-sm text-gray-500 mt-1">{siteConfig.description}</p>
+          <div
+            className="inline-flex items-center justify-center w-12 h-12 rounded-2xl mb-4"
+            style={{ background: "var(--gradient-primary)" }}
+          >
+            <span className="text-white text-lg font-bold" style={{ fontFamily: "var(--font-jakarta)" }}>
+              A
+            </span>
+          </div>
+          <h1
+            className="text-2xl font-bold tracking-tight"
+            style={{
+              fontFamily: "var(--font-jakarta), sans-serif",
+              color: "var(--color-on-background)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            {siteConfig.name}
+          </h1>
+          <p
+            className="text-sm mt-1"
+            style={{ color: "var(--color-on-surface-variant)" }}
+          >
+            {siteConfig.description}
+          </p>
         </div>
 
-        <form onSubmit={handleSubmit} className="bg-white rounded-2xl shadow-sm border border-gray-200 p-8 space-y-4">
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0F3A5F] focus:border-transparent"
-              placeholder="tu@email.com"
-            />
-          </div>
+        {/* Card */}
+        <div
+          className="rounded-[2rem] p-8 space-y-5"
+          style={{
+            background: "var(--color-surface-lowest)",
+            boxShadow: "var(--shadow-ambient)",
+          }}
+        >
+          <form onSubmit={handleSubmit} className="space-y-4">
+            {/* Email */}
+            <div>
+              <label
+                className="block text-xs font-semibold mb-2 tracking-wide uppercase"
+                style={{ color: "var(--color-on-surface-variant)" }}
+              >
+                Email
+              </label>
+              <div className="relative">
+                <Mail
+                  size={15}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{ color: "var(--color-on-surface-variant)" }}
+                />
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  placeholder="tu@email.com"
+                  className="input-field pl-9"
+                />
+              </div>
+            </div>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-              className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#0F3A5F] focus:border-transparent"
-            />
-          </div>
+            {/* Contraseña */}
+            <div>
+              <label
+                className="block text-xs font-semibold mb-2 tracking-wide uppercase"
+                style={{ color: "var(--color-on-surface-variant)" }}
+              >
+                Contraseña
+              </label>
+              <div className="relative">
+                <Lock
+                  size={15}
+                  className="absolute left-3.5 top-1/2 -translate-y-1/2 pointer-events-none"
+                  style={{ color: "var(--color-on-surface-variant)" }}
+                />
+                <input
+                  type="password"
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  required
+                  className="input-field pl-9"
+                />
+              </div>
+            </div>
 
-          {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && (
+              <p
+                className="text-xs px-3 py-2 rounded-xl"
+                style={{
+                  background: "#fff1f0",
+                  color: "#b91c1c",
+                }}
+              >
+                {error}
+              </p>
+            )}
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-[#0F3A5F] text-white font-semibold py-2.5 rounded-lg text-sm hover:bg-[#1E5A8A] transition-colors disabled:opacity-50"
-          >
-            {loading ? "Ingresando..." : "Ingresar"}
-          </button>
-        </form>
+            <button
+              type="submit"
+              disabled={loading}
+              className="btn-primary w-full flex items-center justify-center gap-2 mt-2"
+            >
+              {loading ? (
+                "Ingresando..."
+              ) : (
+                <>
+                  Ingresar
+                  <ArrowRight size={15} />
+                </>
+              )}
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   );
