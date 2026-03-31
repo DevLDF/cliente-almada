@@ -54,7 +54,7 @@ export const emptyContrato = (tipo: ContractType = "vivienda"): Omit<Contrato, "
     duracionMeses: tipo === "comercial" ? 36 : 24,
     montoInicial: 0,
     moneda: "ARS",
-    ajuste: { tipo: "trimestral", indice: "IPC" },
+    ajuste: { tipo: "trimestral", indice: "IPC", porcentaje: 0 },
     pagoDia: 5,
     lugarPago: "",
     impuestoInmobiliario: "locador",
