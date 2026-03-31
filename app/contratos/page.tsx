@@ -36,12 +36,20 @@ export default async function ContratosPage() {
               <p className="font-semibold text-gray-800">{c.nombre}</p>
               <p className="text-sm text-gray-400 capitalize">{c.tipo} · {new Date(c.updated_at).toLocaleDateString("es-AR")}</p>
             </div>
-            <Link
-              href={`/contratos/${c.id}`}
-              className="text-sm text-[#1E5A8A] font-medium hover:underline"
-            >
-              Editar →
-            </Link>
+            <div className="flex items-center gap-4">
+              <Link
+                href={`/contratos/${c.id}/calendario`}
+                className="text-sm text-gray-400 hover:text-gray-600"
+              >
+                Pagos
+              </Link>
+              <Link
+                href={`/contratos/${c.id}/editar`}
+                className="text-sm text-[#1E5A8A] font-medium hover:underline"
+              >
+                Editar →
+              </Link>
+            </div>
           </div>
         ))}
       </div>
