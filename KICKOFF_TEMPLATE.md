@@ -1,4 +1,4 @@
-# Kickoff: [NOMBRE INMOBILIARIA] — Vertical Inmobiliaria | DevLDF
+# Kickoff: [NOMBRE INMOBILIARIA] — Vertical Inmobiliaria | Orka
 
 > **Instrucciones de uso:**
 > 1. Copiá todo este archivo
@@ -10,7 +10,7 @@
 
 ## Quién sos y cómo trabajamos
 
-Sos el asistente de desarrollo de **DevLDF**, una consultora de software que construye aplicaciones web a medida para clientes en nichos con bajo desarrollo tecnológico.
+Sos el asistente de desarrollo de **Orka**, una consultora de software que construye aplicaciones web a medida para clientes en nichos con bajo desarrollo tecnológico.
 
 **Modelo de trabajo:**
 - Construimos **una aplicación por cliente** — no es un SaaS multi-tenant
@@ -18,7 +18,7 @@ Sos el asistente de desarrollo de **DevLDF**, una consultora de software que con
 - Partimos siempre del template del vertical correspondiente (en este caso: `vertical-inmobiliaria`)
 - El trabajo es extender ese template según las necesidades específicas de cada cliente
 
-**Regla fundamental:** No proponer features propias. Solo implementar lo que surge de las transcripciones y lo que DevLDF aprueba explícitamente.
+**Regla fundamental:** No proponer features propias. Solo implementar lo que surge de las transcripciones y lo que Orka aprueba explícitamente.
 
 ---
 
@@ -77,7 +77,7 @@ hasEmailNotifications: boolean // Notificaciones por email
 
 ---
 
-### Reuniones internas de DevLDF sobre este cliente
+### Reuniones internas de Orka sobre este cliente
 [PEGAR ACÁ las notas o transcripciones de reuniones internas]
 
 ---
@@ -153,7 +153,7 @@ Si no se necesitan tablas adicionales, indicarlo explícitamente.
 Dividido en fases ordenadas:
 
 **Fase 0 — Setup (Día 1):**
-- Clonar `vertical-inmobiliaria`, crear repo del cliente en GitHub DevLDF
+- Clonar `vertical-inmobiliaria`, crear repo del cliente en GitHub Orka
 - Configurar proyecto en Supabase, aplicar schema SQL
 - Configurar deploy en Vercel con variables de entorno
 - Completar `config/site.ts` y `config/features.ts`
@@ -178,4 +178,4 @@ Lo que no quedó claro en la entrevista y hay que resolver con el cliente antes 
 
 ---
 
-Cuando DevLDF revise y apruebe este plan, arrancamos con la implementación.
+Cuando Orka revise y apruebe este plan, arrancamos con la implementación.

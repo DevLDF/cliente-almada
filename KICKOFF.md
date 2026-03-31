@@ -87,9 +87,9 @@ export const features = {
 
 ---
 
-### Reuniones internas de DevLDF sobre este cliente
+### Reuniones internas de Orka sobre este cliente
 
-**Fuente:** Reunión interna DevLDF — 30 mar 2026, 11:19 GMT-03:00
+**Fuente:** Reunión interna Orka — 30 mar 2026, 11:19 GMT-03:00
 **Participantes:** Lautaro Risso (LR) · Francisco Lerra (FL)
 
 ---
@@ -195,4 +195,4 @@ Hacé todas las preguntas que necesites para no dejar nada suelto durante el des
 - Casos borde que podrían aparecer y conviene definir ahora
 - Ideas o mejoras que podrían sumar valor al cliente
 
-No generes código. Solo el plan. DevLDF lo revisa y aprueba antes de arrancar.
+No generes código. Solo el plan. Orka lo revisa y aprueba antes de arrancar.

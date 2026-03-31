@@ -1,7 +1,7 @@
 # 🏠 vertical-inmobiliaria
 
 > Vertical de **LF Software Studio** para inmobiliarias.
-> Construido sobre [`boilerplate-tecnico`](https://github.com/DevLDF/boilerplate-tecnico).
+> Construido sobre [`boilerplate-tecnico`](https://github.com/Orka/boilerplate-tecnico).
 
 Incluye: gestión de contratos de alquiler (vivienda, comercial, galpón) con preview en tiempo real, autosave, y exportación a PDF.
 

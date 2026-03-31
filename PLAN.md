@@ -1,5 +1,5 @@
-# Plan de Proyecto — Almada & Cía | DevLDF
-> **Generado:** 2026-03-30 | **Estado:** ✅ Aprobado por DevLDF
+# Plan de Proyecto — Almada & Cía | Orka
+> **Generado:** 2026-03-30 | **Estado:** ✅ Aprobado por Orka
 
 ---
 

@@ -29,4 +29,4 @@ hasTenants    ✅
 
 ## Regla de trabajo
 
-No proponer ni implementar features que no hayan sido aprobadas explícitamente por DevLDF.
+No proponer ni implementar features que no hayan sido aprobadas explícitamente por Orka.

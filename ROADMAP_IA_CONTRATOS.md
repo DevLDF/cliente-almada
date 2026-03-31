@@ -1,7 +1,7 @@
 # Roadmap: Generación de contratos con IA — Feature Futura
 
 > **Estado:** Descartado del MVP. Candidato a feature premium post-lanzamiento.
-> **Decisión tomada:** 2026-03-31 — DevLDF optó por template fijo en MVP por razones de seguridad legal y velocidad al mercado.
+> **Decisión tomada:** 2026-03-31 — Orka optó por template fijo en MVP por razones de seguridad legal y velocidad al mercado.
 
 ---
 
@@ -63,7 +63,7 @@ Devolvé SOLO las cláusulas, sin explicación, en formato de lista.`
 
 - **Plan Base:** Template fijo — incluido en el precio base.
 - **Plan Pro:** Sugerencias de IA por contrato — add-on mensual o por uso.
-- **Costo estimado para DevLDF:** $0.02–$0.10 por llamada a Claude API (modelo haiku).
+- **Costo estimado para Orka:** $0.02–$0.10 por llamada a Claude API (modelo haiku).
 - **Precio sugerido al cliente:** $X/mes o $Y por contrato generado con IA.
 
 ---
@@ -71,7 +71,7 @@ Devolvé SOLO las cláusulas, sin explicación, en formato de lista.`
 ## Condiciones para activar esta feature
 
 - [ ] Almada tiene al menos 20 contratos cargados por tipo (base mínima para que la IA tenga patrones)
-- [ ] DevLDF valida el output con un abogado antes del lanzamiento
+- [ ] Orka valida el output con un abogado antes del lanzamiento
 - [ ] Se agrega disclaimer en la UI: *"Las sugerencias son orientativas. Revisá siempre con un profesional."*
 - [ ] Se define pricing del add-on IA
 - [ ] Se implementa rate limiting para controlar costos de API
