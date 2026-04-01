@@ -1,50 +1,224 @@
 import { listarContratosAction } from "@/actions/contratos.actions";
 import Link from "next/link";
+import { Plus, FileText, Building2, Warehouse } from "lucide-react";
+
+const TIPO_CONFIG = {
+  vivienda: {
+    label: "Vivienda",
+    Icon: FileText,
+    bg: "rgba(0,106,101,0.10)",
+    color: "var(--color-secondary)",
+  },
+  comercial: {
+    label: "Comercial",
+    Icon: Building2,
+    bg: "rgba(0,36,65,0.08)",
+    color: "var(--color-primary-container)",
+  },
+  galpon: {
+    label: "Galpón",
+    Icon: Warehouse,
+    bg: "rgba(124,88,0,0.10)",
+    color: "var(--color-tertiary)",
+  },
+} as const;
 
 export default async function ContratosPage() {
   const [contratos, err] = await listarContratosAction();
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="text-2xl font-bold text-gray-900">Mis contratos</h1>
+    <div className="min-h-screen p-8" style={{ background: "var(--color-surface)" }}>
+      {/* Header */}
+      <div className="flex items-end justify-between mb-8">
+        <div>
+          <p
+            className="text-xs font-semibold tracking-widest uppercase mb-1"
+            style={{ color: "var(--color-on-surface-variant)" }}
+          >
+            Gestión
+          </p>
+          <h1
+            className="text-3xl font-bold leading-tight"
+            style={{
+              fontFamily: "var(--font-jakarta), sans-serif",
+              color: "var(--color-on-background)",
+              letterSpacing: "-0.02em",
+            }}
+          >
+            Contratos
+          </h1>
+          {contratos && contratos.length > 0 && (
+            <p
+              className="text-sm mt-1"
+              style={{ color: "var(--color-on-surface-variant)" }}
+            >
+              {contratos.length} contrato{contratos.length !== 1 ? "s" : ""} registrado{contratos.length !== 1 ? "s" : ""}
+            </p>
+          )}
+        </div>
         <Link
           href="/contratos/nuevo"
-          className="bg-[#0F3A5F] text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-[#1E5A8A] transition-colors"
+          className="btn-primary flex items-center gap-2"
         >
-          + Nuevo contrato
+          <Plus size={15} strokeWidth={2.5} />
+          Nuevo contrato
         </Link>
       </div>
 
       {err && (
-        <p className="text-red-500 text-sm">Error al cargar contratos: {err.message}</p>
+        <div
+          className="p-4 rounded-2xl text-sm mb-4"
+          style={{ background: "#fff1f0", color: "#b91c1c" }}
+        >
+          Error al cargar contratos: {err.message}
+        </div>
       )}
 
       {!err && contratos?.length === 0 && (
-        <div className="text-center py-16 text-gray-400">
-          <p className="text-lg mb-2">No hay contratos todavía</p>
-          <Link href="/contratos/nuevo" className="text-[#1E5A8A] underline text-sm">
+        <div
+          className="rounded-[2rem] p-16 text-center max-w-md mx-auto mt-16"
+          style={{
+            background: "var(--color-surface-lowest)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
+          <div
+            className="inline-flex items-center justify-center w-14 h-14 rounded-2xl mb-4"
+            style={{ background: "rgba(0,36,65,0.06)" }}
+          >
+            <FileText
+              size={24}
+              strokeWidth={1.5}
+              style={{ color: "var(--color-primary-container)" }}
+            />
+          </div>
+          <p
+            className="font-semibold mb-1"
+            style={{ color: "var(--color-on-background)" }}
+          >
+            No hay contratos todavía
+          </p>
+          <p
+            className="text-sm mb-5"
+            style={{ color: "var(--color-on-surface-variant)" }}
+          >
+            Creá tu primer contrato para comenzar
+          </p>
+          <Link href="/contratos/nuevo" className="btn-primary inline-flex">
             Crear el primero
           </Link>
         </div>
       )}
 
-      <div className="space-y-3">
-        {contratos?.map((c) => (
-          <div key={c.id} className="bg-white border border-gray-200 rounded-xl p-4 flex items-center justify-between hover:shadow-sm transition-shadow">
-            <div>
-              <p className="font-semibold text-gray-800">{c.nombre}</p>
-              <p className="text-sm text-gray-400 capitalize">{c.tipo} · {new Date(c.updated_at).toLocaleDateString("es-AR")}</p>
-            </div>
-            <Link
-              href={`/contratos/${c.id}`}
-              className="text-sm text-[#1E5A8A] font-medium hover:underline"
-            >
-              Editar →
-            </Link>
+      {/* Tabla de contratos */}
+      {contratos && contratos.length > 0 && (
+        <div
+          className="rounded-[2rem] overflow-hidden"
+          style={{
+            background: "var(--color-surface-lowest)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
+          {/* Cabecera tabla */}
+          <div
+            className="grid items-center px-6 py-3 text-xs font-semibold uppercase tracking-wide"
+            style={{
+              gridTemplateColumns: "40px 1fr 120px 160px 120px",
+              color: "var(--color-on-surface-variant)",
+              borderBottom: "1px solid rgba(15,58,95,0.06)",
+            }}
+          >
+            <span />
+            <span>Contrato</span>
+            <span>Tipo</span>
+            <span>Actualizado</span>
+            <span className="text-right">Acciones</span>
           </div>
-        ))}
-      </div>
+
+          {/* Filas */}
+          <div>
+            {contratos.map((c, idx) => {
+              const config =
+                TIPO_CONFIG[c.tipo as keyof typeof TIPO_CONFIG] ??
+                TIPO_CONFIG.vivienda;
+              const { Icon } = config;
+              const isLast = idx === contratos.length - 1;
+              return (
+                <div
+                  key={c.id}
+                  className="grid items-center px-6 py-4 transition-colors hover:bg-[rgba(15,58,95,0.02)]"
+                  style={{
+                    gridTemplateColumns: "40px 1fr 120px 160px 120px",
+                    borderBottom: isLast
+                      ? "none"
+                      : "1px solid rgba(15,58,95,0.05)",
+                  }}
+                >
+                  {/* Ícono */}
+                  <div
+                    className="w-8 h-8 rounded-xl flex items-center justify-center shrink-0"
+                    style={{ background: config.bg }}
+                  >
+                    <Icon
+                      size={15}
+                      strokeWidth={1.8}
+                      style={{ color: config.color }}
+                    />
+                  </div>
+
+                  {/* Nombre */}
+                  <p
+                    className="font-semibold text-sm truncate pr-4"
+                    style={{ color: "var(--color-on-background)" }}
+                  >
+                    {c.nombre}
+                  </p>
+
+                  {/* Badge tipo */}
+                  <div>
+                    <span
+                      className="text-xs px-2.5 py-1 rounded-full font-medium"
+                      style={{ background: config.bg, color: config.color }}
+                    >
+                      {config.label}
+                    </span>
+                  </div>
+
+                  {/* Fecha */}
+                  <p
+                    className="text-sm"
+                    style={{ color: "var(--color-on-surface-variant)" }}
+                  >
+                    {new Date(c.updated_at).toLocaleDateString("es-AR", {
+                      day: "2-digit",
+                      month: "short",
+                      year: "numeric",
+                    })}
+                  </p>
+
+                  {/* Acciones */}
+                  <div className="flex items-center justify-end gap-4">
+                    <Link
+                      href={`/contratos/${c.id}/calendario`}
+                      className="text-xs font-medium"
+                      style={{ color: "var(--color-on-surface-variant)" }}
+                    >
+                      Pagos
+                    </Link>
+                    <Link
+                      href={`/contratos/${c.id}/editar`}
+                      className="text-xs font-semibold"
+                      style={{ color: "var(--color-primary-container)" }}
+                    >
+                      Editar →
+                    </Link>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </div>
   );
 }

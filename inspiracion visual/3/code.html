@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f3f4f5",
+              "surface-container-high": "#e7e8e9",
+              "outline": "#73777f",
+              "on-surface-variant": "#42474e",
+              "primary-fixed-dim": "#a5c9f6",
+              "on-surface": "#191c1d",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#3c6188",
+              "error": "#ba1a1a",
+              "background": "#f8f9fa",
+              "on-primary-fixed": "#001d36",
+              "surface-dim": "#d9dadb",
+              "on-background": "#191c1d",
+              "primary": "#002441",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-container": "#493500",
+              "on-secondary-container": "#006f69",
+              "error-container": "#ffdad6",
+              "outline-variant": "#c3c7cf",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#59dad1",
+              "secondary-fixed": "#79f6ed",
+              "on-secondary-fixed-variant": "#00504c",
+              "on-tertiary-fixed-variant": "#5c4300",
+              "tertiary-fixed-dim": "#fbbc00",
+              "tertiary-fixed": "#ffdfa0",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#edeeef",
+              "surface": "#f8f9fa",
+              "on-primary-container": "#80a4cf",
+              "on-error": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "inverse-surface": "#2e3132",
+              "on-secondary-fixed": "#00201e",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-container": "#cd9900",
+              "surface-container-highest": "#e1e3e4",
+              "primary-fixed": "#d1e4ff",
+              "tertiary": "#2f2000",
+              "on-primary-fixed-variant": "#22496f",
+              "inverse-primary": "#a5c9f6",
+              "secondary-container": "#76f3ea",
+              "secondary": "#006a65",
+              "primary-container": "#0f3a5f",
+              "on-tertiary-fixed": "#261a00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-header {
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background font-body text-on-background selection:bg-secondary-container">
+<header class="fixed top-0 z-50 w-full bg-white/70 dark:bg-blue-950/70 backdrop-blur-3xl shadow-[0_4px_20px_rgba(15,58,95,0.04)]">
+<div class="flex justify-between items-center w-full px-8 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-950 dark:text-blue-50 text-2xl" data-icon="architecture">architecture</span>
+<h1 class="text-xl font-extrabold text-blue-950 dark:text-white font-headline tracking-tight">Almada &amp; Cía</h1>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-400 dark:text-blue-300/50 font-label font-semibold text-xs uppercase tracking-widest hover:bg-slate-100/50 transition-all px-3 py-1 rounded-md" href="#">Dashboard</a>
+<a class="text-slate-400 dark:text-blue-300/50 font-label font-semibold text-xs uppercase tracking-widest hover:bg-slate-100/50 transition-all px-3 py-1 rounded-md" href="#">Contratos</a>
+<a class="text-teal-700 dark:text-teal-400 font-label font-semibold text-xs uppercase tracking-widest px-3 py-1 rounded-md" href="#">Clientes</a>
+<a class="text-slate-400 dark:text-blue-300/50 font-label font-semibold text-xs uppercase tracking-widest hover:bg-slate-100/50 transition-all px-3 py-1 rounded-md" href="#">Calendario</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed ring-2 ring-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="professional portrait of a modern architect in a bright studio with soft natural lighting and minimalist background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7vnMBWkHByZBfBlsDXkTkVVpiW-Ovnjr0C1ku5Y25Z0r3NAcxsrkWKTOdp51-uzWd1BwDQlrVEl66hz9CGjNbr-848xehu9MBHoanl7yd9OQgYYsvrL2UNu_850e2WVgst9tbYmcKC-t7P4KKU1Qne5gK5ORIlLvXm1bip6P7jYx8aNPuWdKEAo4XZRSLpOfI6at0NMudS939SL4Yidr68n8wyAKhNiQfGcHuc5T0Q32nQ8JHEgAH8wxw91adEmruz2c1QckKiBG8"/>
+</div>
+</div>
+</header>
+<main class="pt-28 pb-32 px-6 max-w-6xl mx-auto">
+<section class="mb-12">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div>
+<h2 class="font-headline text-4xl font-extrabold text-primary tracking-tight mb-2">Directorio de Clientes</h2>
+<p class="text-on-surface-variant font-body max-w-lg leading-relaxed">
+                        Gestión simplificada de propietarios e inquilinos en fase de desarrollo o entrevista.
+                    </p>
+</div>
+<div class="flex gap-3">
+<div class="relative group">
+<input class="bg-surface-container-lowest border-none rounded-lg px-5 py-3 pl-12 w-64 focus:ring-2 focus:ring-surface-tint/20 transition-all text-sm placeholder:text-outline-variant shadow-sm" placeholder="Buscar cliente..." type="text"/>
+<span class="material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 text-outline-variant group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+</div>
+<button class="bg-gradient-to-br from-primary to-primary-container text-white rounded-full px-6 py-3 font-semibold text-sm flex items-center gap-2 hover:shadow-lg transition-all active:scale-95 shadow-[0px_10px_20px_rgba(0,36,65,0.15)]">
+<span class="material-symbols-outlined text-lg" data-icon="person_add">person_add</span>
+                        Nuevo Cliente
+                    </button>
+</div>
+</div>
+</section>
+<div class="grid grid-cols-1 gap-4">
+<div class="flex flex-col md:flex-row items-center gap-6 bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-white hover:shadow-[0_20px_40px_rgba(15,58,95,0.06)] group">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-surface-container">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="close up headshot of a middle aged man with glasses and a friendly expression professional look" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDMSFgmGFcJpNcW8JJFcJ8H5Sjz3nwMO9kArEmB9giOSedVLH5gnPjFmV023P7kNPykiiAWvFD9x48hpGl3ZxdC97BEZFhzoj1dvjoE2UL-NnSyxx45PnuKypIApBL-Gq-aYUOikSbW9dnQZEqtffYNU_SW-eGXefF4zCdcDtf_LB0DJkQ_OWBgHTkookEVrEIXjEPfl6dJim-Ev6qgNjYPJpigYo99zf3zVmD61kBTmQkjcn7369LDYpO_2GQnOeRnT76sWDnIgqno"/>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 items-center w-full">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Nombre</span>
+<h3 class="font-headline font-bold text-lg text-primary">Carlos Mendez</h3>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Rol</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-base text-primary" data-icon="real_estate_agent">real_estate_agent</span>
+<span class="text-xs font-semibold text-primary">Propietario</span>
+</div>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Proyecto</span>
+<p class="text-sm font-medium text-on-surface">Residencial Los Olivos</p>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-xs font-bold text-secondary uppercase tracking-wide">En Desarrollo</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6 bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-white hover:shadow-[0_20px_40px_rgba(15,58,95,0.06)] group">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-surface-container">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="professional portrait of a young woman smiling warmly high end editorial lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfdtrwdQj6i2EbHN0qw4B6ilEpan6BHNHC2OakjI4DtgG5zEqoxnC4-5QWgayRg8tWKVSgQm11Iu2HsI3r15sy1RfKFxvn3HaTc2PgvQU9aqQjEilq4eamk4mbFCzliICTaxzoH4NJfBhTYQA4QinHKRD_kjCZzGbHbxdGYe1QZR2IQvGsHghEe8x-autrW-lrSSh8E-XXBJJLfEBli6C92_7uFpnY2tjATUnZs-NOsXxwmbzUeVkihdZ6OgFGnBHCKjMOIOv3EYdp"/>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 items-center w-full">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Nombre</span>
+<h3 class="font-headline font-bold text-lg text-primary">Lucía Ferrara</h3>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Rol</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-base text-primary" data-icon="meeting_room">meeting_room</span>
+<span class="text-xs font-semibold text-primary">Inquilino</span>
+</div>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Proyecto</span>
+<p class="text-sm font-medium text-on-surface">Torre Mirador Sur</p>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></div>
+<span class="text-xs font-bold text-on-tertiary-container uppercase tracking-wide">Entrevista</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6 bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-white hover:shadow-[0_20px_40px_rgba(15,58,95,0.06)] group">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-surface-container">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="studio portrait of a man in casual business attire soft lighting minimalist grey background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDyQZgt2LORYHEPXPbkMEfIXB6WfW-aHR54_CuEyKYSQgUfvktRwE1pvtUqF1oUBBZIxhlTMnzg6lmpSy-95FzNT-7goLCExS7picU_XIb-Qw0JVMoe2IY2DIZwR_VWxJAc_d2ptSPb7h8sI8Idxo9sSuBm1Jj9S7ZtqyS9ZFBsnzwK8TYfT1IAIEFISRP3HPSinwwhI_y-Og_UiAagz_1i-J-f2tJ_fud8OKLI-lB9kUfdLDbfpy_8CKIR65wUaqAzioYQ011YJky"/>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 items-center w-full">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Nombre</span>
+<h3 class="font-headline font-bold text-lg text-primary">Roberto Salas</h3>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Rol</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-base text-primary" data-icon="real_estate_agent">real_estate_agent</span>
+<span class="text-xs font-semibold text-primary">Propietario</span>
+</div>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Proyecto</span>
+<p class="text-sm font-medium text-on-surface">Casa Jardín 12</p>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary animate-pulse"></div>
+<span class="text-xs font-bold text-secondary uppercase tracking-wide">En Desarrollo</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+<div class="flex flex-col md:flex-row items-center gap-6 bg-surface-container-lowest p-6 rounded-lg transition-all hover:bg-white hover:shadow-[0_20px_40px_rgba(15,58,95,0.06)] group">
+<div class="w-16 h-16 rounded-xl overflow-hidden shrink-0 shadow-sm border-2 border-surface-container">
+<img alt="Avatar" class="w-full h-full object-cover" data-alt="clean headshot of a woman looking professional and confident with soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB-qUZKdFwwNUD2RiICZm-CW59zTn1wyd_ti6RAWzI6PfggNaN3LZKlfSYIqjaErcNMOnNXlQjEfM7xFqxAJ1HIFPL3LjV-QzmVZV_eqUjibad56N94EP18Ya9FMHInOVu1ag3r4iPiCzbP9o_dSKuLfn8pvjlE8nBKnEO4XQl8cpI26WMIikYx3K45jI4XXHnLLE4vmeTV1Eox4dMHCLkYq5atMWArNRVIKr_VsF4LIwIjI9wn_XgCyq1t8NyudIyjJkpNIxCCZ7_K"/>
+</div>
+<div class="flex-1 grid grid-cols-1 md:grid-cols-4 gap-4 items-center w-full">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Nombre</span>
+<h3 class="font-headline font-bold text-lg text-primary">Elena Vázquez</h3>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Rol</span>
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-surface-container rounded-md">
+<span class="material-symbols-outlined text-base text-primary" data-icon="meeting_room">meeting_room</span>
+<span class="text-xs font-semibold text-primary">Inquilino</span>
+</div>
+</div>
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Proyecto</span>
+<p class="text-sm font-medium text-on-surface">Loft San Telmo</p>
+</div>
+<div class="flex items-center justify-between">
+<div>
+<span class="block text-[10px] font-label font-bold uppercase tracking-widest text-outline-variant mb-1">Estado</span>
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-fixed-dim"></div>
+<span class="text-xs font-bold text-on-tertiary-container uppercase tracking-wide">Entrevista</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-outline">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 flex justify-center">
+<button class="flex items-center gap-2 text-primary font-bold text-sm bg-surface-container-high hover:bg-surface-container-highest px-8 py-3 rounded-full transition-all">
+                Cargar más clientes
+                <span class="material-symbols-outlined text-base" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</main>
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-6 pb-8 pt-4 bg-white/70 dark:bg-blue-950/70 backdrop-blur-3xl shadow-[0_-10px_40px_rgba(15,58,95,0.08)] rounded-t-[3rem] md:hidden">
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-blue-200/40 px-6 py-2">
+<span class="material-symbols-outlined text-2xl" data-icon="dashboard">dashboard</span>
+<span class="font-label text-[11px] font-semibold tracking-wide uppercase mt-1">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-blue-200/40 px-6 py-2">
+<span class="material-symbols-outlined text-2xl" data-icon="description">description</span>
+<span class="font-label text-[11px] font-semibold tracking-wide uppercase mt-1">Contratos</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-teal-50 dark:bg-teal-900/30 text-teal-700 dark:text-teal-300 rounded-[2rem] px-6 py-2 transition-all duration-300">
+<span class="material-symbols-outlined text-2xl" data-icon="group" style="font-variation-settings: 'FILL' 1;">group</span>
+<span class="font-label text-[11px] font-semibold tracking-wide uppercase mt-1">Clientes</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 dark:text-blue-200/40 px-6 py-2">
+<span class="material-symbols-outlined text-2xl" data-icon="calendar_today">calendar_today</span>
+<span class="font-label text-[11px] font-semibold tracking-wide uppercase mt-1">Calendario</span>
+</div>
+</nav>
+</body></html>

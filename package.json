@@ -10,21 +10,28 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
+    "@hookform/resolvers": "^5.2.2",
+    "@supabase/ssr": "^0.5.1",
+    "@supabase/supabase-js": "^2.45.0",
+    "autoprefixer": "^10.4.27",
+    "lucide-react": "^1.7.0",
     "next": "15.5.14",
+    "postcss": "^8.5.8",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-hook-form": "^7.72.0",
+    "tailwindcss": "^4.2.2",
     "zod": "^3.23.8",
     "zsa": "^0.6.0",
-    "zsa-react": "^0.2.3",
-    "@supabase/supabase-js": "^2.45.0",
-    "@supabase/ssr": "^0.5.1"
+    "zsa-react": "^0.2.3"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.2.2",
     "@types/node": "^22.0.0",
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
-    "typescript": "^5.5.0",
     "eslint": "^9.0.0",
-    "eslint-config-next": "15.5.14"
+    "eslint-config-next": "15.5.14",
+    "typescript": "^5.5.0"
   }
 }

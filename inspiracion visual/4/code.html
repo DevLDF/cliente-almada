@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+
+<html class="light" lang="es"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Manrope:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "surface-container-low": "#f3f4f5",
+              "surface-container-high": "#e7e8e9",
+              "outline": "#73777f",
+              "on-surface-variant": "#42474e",
+              "primary-fixed-dim": "#a5c9f6",
+              "on-surface": "#191c1d",
+              "on-secondary": "#ffffff",
+              "surface-tint": "#3c6188",
+              "error": "#ba1a1a",
+              "background": "#f8f9fa",
+              "on-primary-fixed": "#001d36",
+              "surface-dim": "#d9dadb",
+              "on-background": "#191c1d",
+              "primary": "#002441",
+              "inverse-on-surface": "#f0f1f2",
+              "tertiary-container": "#493500",
+              "on-secondary-container": "#006f69",
+              "error-container": "#ffdad6",
+              "outline-variant": "#c3c7cf",
+              "on-primary": "#ffffff",
+              "on-error-container": "#93000a",
+              "secondary-fixed-dim": "#59dad1",
+              "secondary-fixed": "#79f6ed",
+              "on-secondary-fixed-variant": "#00504c",
+              "on-tertiary-fixed-variant": "#5c4300",
+              "tertiary-fixed-dim": "#fbbc00",
+              "tertiary-fixed": "#ffdfa0",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#edeeef",
+              "surface": "#f8f9fa",
+              "on-primary-container": "#80a4cf",
+              "on-error": "#ffffff",
+              "surface-bright": "#f8f9fa",
+              "inverse-surface": "#2e3132",
+              "on-secondary-fixed": "#00201e",
+              "surface-variant": "#e1e3e4",
+              "on-tertiary-container": "#cd9900",
+              "surface-container-highest": "#e1e3e4",
+              "primary-fixed": "#d1e4ff",
+              "tertiary": "#2f2000",
+              "on-primary-fixed-variant": "#22496f",
+              "inverse-primary": "#a5c9f6",
+              "secondary-container": "#76f3ea",
+              "secondary": "#006a65",
+              "primary-container": "#0f3a5f",
+              "on-tertiary-fixed": "#261a00"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Manrope"],
+              "label": ["Manrope"]
+            },
+            borderRadius: {"DEFAULT": "1rem", "lg": "2rem", "xl": "3rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .glass-card {
+        background: rgba(255, 255, 255, 0.7);
+        backdrop-filter: blur(24px);
+      }
+      body {
+        font-family: 'Manrope', sans-serif;
+        background-color: #f8f9fa;
+      }
+      h1, h2, h3 {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-background">
+<!-- TopAppBar Shell -->
+<header class="fixed top-0 left-0 w-full z-50 bg-white/70 backdrop-blur-3xl shadow-[0_4px_20px_rgba(15,58,95,0.04)] flex justify-between items-center w-full px-8 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-blue-950" data-icon="architecture">architecture</span>
+<span class="text-xl font-extrabold text-blue-950 tracking-tight font-['Plus_Jakarta_Sans']">Almada &amp; Cía</span>
+</div>
+<div class="flex items-center gap-6">
+<nav class="hidden md:flex items-center gap-8 text-slate-400 font-semibold tracking-wide uppercase text-[11px] font-['Manrope']">
+<a class="hover:text-teal-600 transition-all" href="#">Dashboard</a>
+<a class="hover:text-teal-600 transition-all" href="#">Contratos</a>
+<a class="hover:text-teal-600 transition-all" href="#">Clientes</a>
+<a class="text-teal-700" href="#">Calendario</a>
+</nav>
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="professional portrait of a middle-aged male architect with clean glasses and a kind smile, minimalist studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCqfTQKDfOrOljSOnZhIXJ2xUtw5psJEqqJgtypP3LGmvWVoxof86PPFJTpP0sshJOI40HaNJGyc0rPr1jyr7359SMPD8NEqGLdJi8na7iPk2R9KTqzGTcqvql-MFWcKUYz3bT2qeefa0ykpKeAsW_LFHtef7XIEbLjt7ekttbHiW_VTOAy7dlt8eGUgjpT1ZGOFG4QcCxCFEABK52FnGFYgPAuZWAkFChdPE_FSkxC9RsOht_hs3PEljkvnF37IjgIt80Qs9xsn9kV"/>
+</div>
+</div>
+</header>
+<main class="pt-24 pb-32 px-6 md:px-12 max-w-7xl mx-auto">
+<!-- Editorial Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-12">
+<div>
+<h1 class="text-4xl md:text-5xl font-extrabold text-primary tracking-tight mb-2">Cronograma Global</h1>
+<p class="text-on-surface-variant max-w-md text-lg leading-relaxed">
+                    Visualiza y gestiona todos los hitos, cobros e inicios de obra en un solo lugar.
+                </p>
+</div>
+<!-- Filters Bar - Glassmorphism -->
+<div class="glass-card p-4 rounded-lg shadow-sm flex flex-wrap items-center gap-4 border border-outline-variant/15">
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="person">person</span>
+<select class="pl-10 pr-8 py-2 bg-surface-container-lowest border-none rounded-md text-sm font-semibold focus:ring-2 focus:ring-surface-tint appearance-none min-w-[160px]">
+<option>Todos los clientes</option>
+<option>Inversiones del Sur</option>
+<option>Grupo Desarrollar</option>
+</select>
+</div>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm" data-icon="category">category</span>
+<select class="pl-10 pr-8 py-2 bg-surface-container-lowest border-none rounded-md text-sm font-semibold focus:ring-2 focus:ring-surface-tint appearance-none min-w-[160px]">
+<option>Todos los tipos</option>
+<option>Vencimientos</option>
+<option>Inicios</option>
+<option>Hitos</option>
+</select>
+</div>
+<button class="bg-primary-container text-white px-5 py-2 rounded-full font-bold text-sm flex items-center gap-2 hover:opacity-90 transition-all">
+<span class="material-symbols-outlined text-sm" data-icon="filter_list">filter_list</span>
+                    Filtrar
+                </button>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Column: Calendar View -->
+<div class="lg:col-span-8">
+<div class="bg-white rounded-xl p-8 shadow-[0_20px_40px_rgba(15,58,95,0.04)]">
+<!-- Calendar Header -->
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-2xl font-bold text-primary">Octubre 2023</h2>
+<div class="flex gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors">
+<span class="material-symbols-outlined" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Calendar Grid -->
+<div class="grid grid-cols-7 gap-px bg-outline-variant/20 rounded-lg overflow-hidden border border-outline-variant/10">
+<!-- Days of Week -->
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Lun</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Mar</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Mié</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Jue</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Vie</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Sáb</div>
+<div class="bg-surface-container p-3 text-center text-[10px] font-bold uppercase tracking-widest text-on-surface-variant">Dom</div>
+<!-- Date Cells -->
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">25</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">26</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">27</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">28</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">29</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-slate-300 text-sm font-semibold">30</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-on-surface text-sm font-bold">1</span>
+</div>
+<!-- Highlighted Days -->
+<div class="bg-white min-h-[100px] p-2 relative group hover:bg-surface-container-low transition-colors">
+<span class="text-on-surface text-sm font-bold">2</span>
+<div class="mt-2 space-y-1">
+<div class="bg-secondary/10 text-secondary text-[9px] px-2 py-1 rounded-md font-bold truncate">Inicio: Obra San Martin</div>
+</div>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">3</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">4</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">5</span>
+<div class="mt-2 space-y-1">
+<div class="bg-tertiary-fixed text-on-tertiary-fixed-variant text-[9px] px-2 py-1 rounded-md font-bold truncate">Vencimiento: Cuota #12</div>
+</div>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group bg-teal-50/20">
+<span class="text-on-surface text-sm font-bold">6</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">7</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">8</span>
+</div>
+<!-- More Days... Simplified -->
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">9</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group border-2 border-secondary/20">
+<span class="text-on-surface text-sm font-bold">10</span>
+<div class="mt-2 space-y-1">
+<div class="bg-primary-container text-white text-[9px] px-2 py-1 rounded-md font-bold truncate">Hito: Aprobación Planos</div>
+</div>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">11</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">12</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">13</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">14</span>
+</div>
+<div class="bg-white min-h-[100px] p-2 relative group">
+<span class="text-on-surface text-sm font-bold">15</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Column: Focus & List -->
+<div class="lg:col-span-4 space-y-8">
+<!-- Quick Summary Stats (Haptic Depth) -->
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-tertiary-fixed">
+<p class="text-[10px] font-bold uppercase text-on-surface-variant tracking-wider mb-1">Por Cobrar</p>
+<h4 class="text-2xl font-extrabold text-primary">$1.2M</h4>
+</div>
+<div class="bg-white p-6 rounded-lg shadow-sm border-l-4 border-secondary">
+<p class="text-[10px] font-bold uppercase text-on-surface-variant tracking-wider mb-1">Próx. Inicios</p>
+<h4 class="text-2xl font-extrabold text-primary">03</h4>
+</div>
+</div>
+<!-- Upcoming Events List -->
+<div class="bg-surface-container-lowest rounded-xl p-8 shadow-[0_20px_40px_rgba(15,58,95,0.04)] h-full">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-xl font-bold text-primary">Próximos Eventos</h3>
+<span class="bg-surface-container px-3 py-1 rounded-full text-[10px] font-bold text-on-surface-variant uppercase">Semana 41</span>
+</div>
+<div class="space-y-6">
+<!-- Event 1 -->
+<div class="flex gap-4 group">
+<div class="flex-shrink-0 flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface-variant">OCT</span>
+<span class="text-lg font-extrabold text-primary leading-none">12</span>
+<div class="w-0.5 h-full bg-surface-container mt-2"></div>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-lg p-4 group-hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between mb-1">
+<span class="bg-tertiary-fixed text-on-tertiary-fixed-variant px-2 py-0.5 rounded text-[10px] font-bold">CUOTA</span>
+<span class="text-xs font-semibold text-on-surface-variant">#4567</span>
+</div>
+<h4 class="font-bold text-primary mb-1">Fideicomiso "Las Lilas"</h4>
+<p class="text-sm text-on-surface-variant">Vencimiento Cuota #04</p>
+<div class="mt-3 flex items-center justify-between">
+<span class="text-sm font-bold text-primary">$450,000</span>
+<button class="text-secondary text-xs font-bold hover:underline">Ver detalle</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="flex gap-4 group">
+<div class="flex-shrink-0 flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface-variant">OCT</span>
+<span class="text-lg font-extrabold text-primary leading-none">15</span>
+<div class="w-0.5 h-full bg-surface-container mt-2"></div>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-lg p-4 group-hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between mb-1">
+<span class="bg-secondary/10 text-secondary px-2 py-0.5 rounded text-[10px] font-bold">CONTRATO</span>
+<span class="text-xs font-semibold text-on-surface-variant">#8821</span>
+</div>
+<h4 class="font-bold text-primary mb-1">Oficinas Central Park</h4>
+<p class="text-sm text-on-surface-variant">Firma de Inicio de Obra</p>
+<div class="mt-3 flex items-center gap-2">
+<div class="w-6 h-6 rounded-full overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional female office manager portrait, soft lighting, business attire" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA9Omek7KGZARZJSIac4PunqiTkq5b-ZTQXFnoYXlV8iYZEdMVTgMzuzs2t-0cR4vPgWMWGOF80-cRjZvSXyPmlPMEx2UfcGMriVJgzgS55gLfZ60rV205F5IheLAgNZOePbStLI0J2JhyXTV1a2QjR_71uKGc7F214E19SS34NYUT6t1PsKZfHLR9Tq6tMXHa2JEH16wpzQXlEocXobqXWkCEuTRpq_oVePwoUQZi_ixDPcUmFLZhTMxCk1MMsGUE7BBGkFnNr-YfQ"/>
+</div>
+<span class="text-xs text-on-surface-variant">Asignado: Maria Gomez</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="flex gap-4 group">
+<div class="flex-shrink-0 flex flex-col items-center">
+<span class="text-xs font-bold text-on-surface-variant">OCT</span>
+<span class="text-lg font-extrabold text-primary leading-none">18</span>
+</div>
+<div class="flex-grow">
+<div class="bg-surface-container-low rounded-lg p-4 group-hover:bg-surface-container-high transition-all">
+<div class="flex items-center justify-between mb-1">
+<span class="bg-primary-container/10 text-primary-container px-2 py-0.5 rounded text-[10px] font-bold">HITO</span>
+<span class="text-xs font-semibold text-on-surface-variant">#3304</span>
+</div>
+<h4 class="font-bold text-primary mb-1">Proyecto Residencial Alvear</h4>
+<p class="text-sm text-on-surface-variant">Finalización Etapa Cimientos</p>
+</div>
+</div>
+</div>
+</div>
+<button class="w-full mt-8 py-4 border-2 border-dashed border-outline-variant rounded-lg text-on-surface-variant font-bold text-sm hover:border-secondary hover:text-secondary transition-all">
+                        + Añadir Hito Manual
+                    </button>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar Shell -->
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/70 backdrop-blur-3xl shadow-[0_-10px_40px_rgba(15,58,95,0.08)] flex justify-around items-center px-6 pb-8 pt-4 md:hidden rounded-t-[3rem]">
+<div class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="dashboard">dashboard</span>
+<span class="font-['Manrope'] text-[11px] font-semibold tracking-wide uppercase">Dashboard</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="description">description</span>
+<span class="font-['Manrope'] text-[11px] font-semibold tracking-wide uppercase">Contratos</span>
+</div>
+<div class="flex flex-col items-center justify-center text-slate-400 px-6 py-2">
+<span class="material-symbols-outlined mb-1" data-icon="group">group</span>
+<span class="font-['Manrope'] text-[11px] font-semibold tracking-wide uppercase">Clientes</span>
+</div>
+<div class="flex flex-col items-center justify-center bg-teal-50 text-teal-700 rounded-[2rem] px-6 py-2 transition-all duration-300">
+<span class="material-symbols-outlined mb-1" data-icon="calendar_today">calendar_today</span>
+<span class="font-['Manrope'] text-[11px] font-semibold tracking-wide uppercase">Calendario</span>
+</div>
+</nav>
+<!-- Floating Action Button (SUPPRESSED based on page context/focus on calendar navigation) -->
+</body></html>

@@ -1,12 +1,38 @@
 "use server";
 
 import { createServerAction } from "zsa";
+import { z } from "zod";
 import { createClient } from "@/lib/supabase/server";
 import {
   crearContratoSchema,
   actualizarContratoSchema,
   idContratoSchema,
 } from "@/validations/contrato.schema";
+import { emptyContrato } from "@/types/contrato";
+
+// ── Crear borrador (solo tipo) ────────────────────────────────
+
+export const crearBorradorContratoAction = createServerAction()
+  .input(z.object({ tipo: z.enum(["vivienda", "comercial", "galpon"]) }))
+  .handler(async ({ input }) => {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error("No autenticado");
+
+    const { data, error } = await supabase
+      .from("contratos")
+      .insert({
+        user_id: user.id,
+        nombre: "Sin nombre",
+        tipo: input.tipo,
+        data: emptyContrato(input.tipo),
+      })
+      .select("id")
+      .single();
+
+    if (error) throw new Error(error.message);
+    return data;
+  });
 
 // ── Listar contratos del usuario ──────────────────────────────
 

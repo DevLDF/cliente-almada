@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Design System: "The Friendly Architect"
+   Paleta: Navy / Teal / Amber
+   ───────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Primarios */
+  --color-primary:           #002441;
+  --color-primary-container: #0f3a5f;
+  --color-primary-hover:     #1e5a8a;
+
+  /* Acento Teal (éxito, CTA secundario) */
+  --color-secondary:         #006a65;
+  --color-secondary-hover:   #004d49;
+
+  /* Acento Amber (celebratorio, alertas) */
+  --color-tertiary:          #7c5800;
+  --color-tertiary-fixed:    #ffdea8;
+  --color-tertiary-surface:  #fffbf0;
+
+  /* Superficies */
+  --color-surface:           #f8f9fa;
+  --color-surface-container: #edeeef;
+  --color-surface-lowest:    #ffffff;
+  --color-surface-tint:      #3c6188;
+
+  /* Texto */
+  --color-on-background:     #191c1d;
+  --color-on-surface:        #191c1d;
+  --color-on-surface-variant:#42474e;
+  --color-on-primary:        #ffffff;
+
+  /* Elevación */
+  --shadow-ambient:  0px 20px 40px rgba(15, 58, 95, 0.08);
+  --shadow-card:     0px 4px 16px rgba(15, 58, 95, 0.06);
+
+  /* Gradiente principal */
+  --gradient-primary: linear-gradient(135deg, #002441, #0f3a5f);
+  --gradient-teal:    linear-gradient(135deg, #004d49, #006a65);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Tailwind v4 @theme — expone tokens como utilidades de Tailwind
+   ───────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  --color-primary:            var(--color-primary);
+  --color-primary-container:  var(--color-primary-container);
+  --color-secondary:          var(--color-secondary);
+  --color-tertiary:           var(--color-tertiary);
+  --color-tertiary-fixed:     var(--color-tertiary-fixed);
+  --color-surface:            var(--color-surface);
+  --color-surface-container:  var(--color-surface-container);
+  --color-surface-lowest:     var(--color-surface-lowest);
+  --color-surface-tint:       var(--color-surface-tint);
+  --color-on-background:      var(--color-on-background);
+  --color-on-surface-variant: var(--color-on-surface-variant);
+  --color-on-primary:         var(--color-on-primary);
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Tipografía base
+   ───────────────────────────────────────────────────────────────────────────── */
+
+body {
+  color: var(--color-on-background);
+  background: var(--color-surface);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Componentes reutilizables
+   ───────────────────────────────────────────────────────────────────────────── */
+
+/* Botón primario con gradiente */
+.btn-primary {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  padding: 0.625rem 1.25rem;
+  transition: opacity 0.15s, transform 0.1s;
+}
+.btn-primary:hover {
+  opacity: 0.92;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-primary:disabled {
+  opacity: 0.5;
+}
+
+/* Input con ghost border en focus */
+.input-field {
+  background: var(--color-surface-lowest);
+  border-radius: 1.5rem;
+  padding: 0.625rem 1rem;
+  font-size: 0.875rem;
+  color: var(--color-on-background);
+  outline: none;
+  border: 2px solid transparent;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+.input-field:focus {
+  border-color: var(--color-surface-tint);
+  box-shadow: 0 0 0 4px rgba(60, 97, 136, 0.12);
+}

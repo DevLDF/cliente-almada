@@ -117,31 +117,39 @@ telefono: z.string().optional().default(""),
 
 ## 5. Plan de implementación
 
-### Fase 0 — Setup (Día 1)
-- [ ] Configurar proyecto en Supabase — aplicar `supabase/schema.sql` + tabla `pagos_calendario` + índice GIN
-- [ ] Configurar deploy en Vercel con variables de entorno
-- [ ] Activar `hasReports: true` en `config/features.ts`
-- [ ] Agregar campo `telefono` a `personaSchema` y `emptyPersona`
+### Fase 0 — Setup ✅ COMPLETADA (2026-03-31)
+- [x] Configurar proyecto en Supabase — schema aplicado (`contratos` + `pagos_calendario` + índice GIN)
+- [x] `.env.local` verificado y corregido (`NEXT_PUBLIC_SITE_URL` → localhost)
+- [x] `hasReports: true` en `config/features.ts` (ya estaba)
+- [x] `telefono` en `personaSchema` y `emptyPersona` (ya estaba)
+- [x] Tailwind v4 + postcss instalado y configurado
+- [x] `app/layout.tsx` + `globals.css` + `app/page.tsx`
+- [x] Login page + auth callback + middleware con protección de rutas
+- ⚠️ Deploy en Vercel pendiente (proyecto `cliente.almada` creado, sin deploy aún)
 
 ---
 
-### Fase 1 — Wizard de contrato (Días 2–5)
-**Rama:** `feature/formulario-contrato`
+### Fase 1 — Wizard de contrato ✅ COMPLETADA (2026-03-31)
+**Rama:** `feature/formulario-contrato` (pusheada, PR pendiente merge a main)
 
-- `app/contratos/nuevo/page.tsx` — selector de tipo → entra al wizard
-- `app/contratos/[id]/editar/page.tsx` — edición (reutiliza wizard)
-- `components/forms/contrato/ContratoWizard.tsx` — wizard con barra de progreso
-- `components/forms/contrato/steps/Step1Locador.tsx`
-- `components/forms/contrato/steps/Step2Locatarios.tsx`
-- `components/forms/contrato/steps/Step3Inmueble.tsx`
-- `components/forms/contrato/steps/Step4Condiciones.tsx`
-- `components/forms/contrato/steps/Step5Garantes.tsx`
-- `components/forms/contrato/steps/Step6Opcionales.tsx`
+- [x] `app/contratos/nuevo/page.tsx` — selector de tipo (vivienda / comercial / galpón)
+- [x] `app/contratos/[id]/editar/page.tsx` — carga contrato y renderiza wizard
+- [x] `components/forms/contrato/ContratoWizard.tsx` — wizard con barra de progreso y autosave
+- [x] `components/forms/contrato/CampoTexto.tsx` — input reutilizable con label + error
+- [x] `components/forms/contrato/steps/Step1Locador.tsx`
+- [x] `components/forms/contrato/steps/Step2Locatarios.tsx` (useFieldArray — múltiples)
+- [x] `components/forms/contrato/steps/Step3Inmueble.tsx`
+- [x] `components/forms/contrato/steps/Step4Condiciones.tsx`
+- [x] `components/forms/contrato/steps/Step5Garantes.tsx` (useFieldArray — múltiples)
+- [x] `components/forms/contrato/steps/Step6Opcionales.tsx` (nombre + cláusula especial + inmueble en venta)
+- [x] `actions/contratos.actions.ts` — agregado `crearBorradorContratoAction`
+- [x] `types/contrato.ts` — corregido `emptyContrato` (porcentaje en ajuste)
 
-Lógica clave:
-- react-hook-form + validación Zod por step
-- Crear: `crearContratoAction` con datos mínimos al iniciar → autosave por paso con `actualizarContratoAction`
-- Editar: cargar datos existentes → autosave por paso
+Lógica implementada:
+- react-hook-form + zodResolver + validación por step con `form.trigger(fields)`
+- Flujo: seleccionar tipo → `crearBorradorContratoAction` → wizard autosave por paso
+- Nombre del contrato se deriva automáticamente: `locatario — dirección`
+- Edición: misma página `/contratos/[id]/editar` carga datos existentes del JSONB
 
 ---
 
