@@ -125,12 +125,12 @@ telefono: z.string().optional().default(""),
 - [x] Tailwind v4 + postcss instalado y configurado
 - [x] `app/layout.tsx` + `globals.css` + `app/page.tsx`
 - [x] Login page + auth callback + middleware con protección de rutas
-- ⚠️ Deploy en Vercel pendiente (proyecto `cliente.almada` creado, sin deploy aún)
+- ⚠️ Deploy en Vercel pendiente — conectar repo GitHub `DevLDF/cliente-almada` en Vercel dashboard (Settings → Git)
 
 ---
 
 ### Fase 1 — Wizard de contrato ✅ COMPLETADA (2026-03-31)
-**Rama:** `feature/formulario-contrato` (pusheada, PR pendiente merge a main)
+**Rama:** `feature/formulario-contrato` (mergeada a main)
 
 - [x] `app/contratos/nuevo/page.tsx` — selector de tipo (vivienda / comercial / galpón)
 - [x] `app/contratos/[id]/editar/page.tsx` — carga contrato y renderiza wizard
@@ -153,16 +153,27 @@ Lógica implementada:
 
 ---
 
-### Fase 2 — Calendario de pagos (Días 6–8)
-**Rama:** `feature/calendario-pagos`
+### Fase 2 — Calendario de pagos ✅ COMPLETADA (2026-03-31)
+**Rama:** `feature/calendario-pagos` (mergeada a main)
 
-- `validations/pago.schema.ts`
-- `actions/pagos.actions.ts`
-  - `generarCalendarioAction(contratoId)` — calcula todas las cuotas con ajuste IPC/ICL
-  - `marcarPagadoAction(pagoId, fechaPago)`
-  - `listarPagosContratoAction(contratoId)`
-  - `listarPagosProximosAction()` — vencen en los próximos 7 días
-- `app/contratos/[id]/calendario/page.tsx` — tabla de cuotas con estado y acciones
+- [x] `validations/pago.schema.ts`
+- [x] `actions/pagos.actions.ts` — `generarCalendarioAction`, `marcarPagadoAction`, `desmarcarPagadoAction`, `listarPagosContratoAction`
+- [x] `app/contratos/[id]/calendario/page.tsx` — tabla de cuotas con estado y acciones
+- [x] `components/contratos/CalendarioPagos.tsx` — Client Component con toggle pagado/vencido
+
+---
+
+### Fase A — Rediseño visual "The Friendly Architect" ✅ COMPLETADA (2026-04-01)
+**Rama:** `feature/rediseno-fase-a` (mergeada a main)
+
+- [x] Design system en `app/globals.css` — tokens Navy/Teal/Amber, fonts Jakarta + Manrope
+- [x] `components/shared/Sidebar.tsx` — nav fijo w-60, reemplaza BottomNav
+- [x] Dashboard (`app/page.tsx`) — grid 4 métricas + panel lateral, layout desktop
+- [x] Contratos (`app/contratos/page.tsx`) — tabla con CSS grid, empty state
+- [x] Clientes (`DirectorioClientes.tsx`) — tabla con avatar + búsqueda en header
+- [x] CalendarioPagos — migrado a design tokens, header consistente
+- [x] fix(supabase): RLS `auth.uid()` → `(select auth.uid())` en contratos y pagos_calendario
+- [x] fix(supabase): `update_updated_at` function `search_path` mutable
 
 ---
 
