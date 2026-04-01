@@ -36,7 +36,7 @@ export default async function DashboardPage() {
       .lte("fecha_vencimiento", enSieteDias.toISOString().split("T")[0]!)
       .eq("estado", "pendiente")
       .order("fecha_vencimiento", { ascending: true })
-      .limit(5),
+      .limit(10),
     supabase
       .from("pagos_calendario")
       .select("monto_calculado")
@@ -54,121 +54,121 @@ export default async function DashboardPage() {
       : 100;
 
   return (
-    <div className="min-h-screen" style={{ background: "var(--color-surface)" }}>
+    <div className="min-h-screen p-8" style={{ background: "var(--color-surface)" }}>
       {/* Header */}
-      <div className="px-5 pt-8 pb-6 max-w-2xl mx-auto">
+      <div className="mb-8">
         <p
           className="text-xs font-semibold tracking-widest uppercase mb-1"
           style={{ color: "var(--color-on-surface-variant)" }}
         >
           Resumen general
         </p>
-        <h1
-          className="text-3xl font-bold leading-tight"
-          style={{
-            fontFamily: "var(--font-jakarta), sans-serif",
-            color: "var(--color-on-background)",
-            letterSpacing: "-0.02em",
-          }}
-        >
-          Bienvenido,{" "}
-          <span style={{ color: "var(--color-primary-container)" }}>
-            Director.
-          </span>
-        </h1>
-        <p
-          className="text-sm mt-1"
-          style={{ color: "var(--color-on-surface-variant)" }}
-        >
-          {totalContratos
-            ? `Gestionás ${totalContratos} contrato${totalContratos !== 1 ? "s" : ""} activo${totalContratos !== 1 ? "s" : ""}.`
-            : "Creá tu primer contrato para comenzar."}
-        </p>
-      </div>
-
-      <div className="px-5 max-w-2xl mx-auto space-y-4 pb-8">
-        {/* Fila 1: Contratos + Salud */}
-        <div className="grid grid-cols-2 gap-3">
-          <MetricCard
-            label="Contratos activos"
-            value={String(totalContratos ?? 0)}
-            Icon={FileText}
-            iconBg="rgba(0,36,65,0.08)"
-            iconColor="var(--color-primary-container)"
-          />
-          <div
-            className="rounded-[2rem] p-5 flex flex-col justify-between"
+        <div className="flex items-end justify-between">
+          <h1
+            className="text-3xl font-bold leading-tight"
             style={{
-              background: "var(--color-surface-lowest)",
-              boxShadow: "var(--shadow-card)",
+              fontFamily: "var(--font-jakarta), sans-serif",
+              color: "var(--color-on-background)",
+              letterSpacing: "-0.02em",
             }}
           >
-            <p
-              className="text-xs font-semibold uppercase tracking-wide mb-3"
-              style={{ color: "var(--color-on-surface-variant)" }}
-            >
-              Salud portfolio
-            </p>
-            <div className="flex items-end justify-between">
-              <div>
-                <p
-                  className="text-2xl font-bold"
-                  style={{
-                    fontFamily: "var(--font-jakarta), sans-serif",
-                    color: "var(--color-on-background)",
-                  }}
-                >
-                  {saludPct}%
-                </p>
-                <p
-                  className="text-xs mt-0.5"
-                  style={{ color: "var(--color-secondary)" }}
-                >
-                  Al día
-                </p>
-              </div>
-              <SaludRing pct={saludPct} />
-            </div>
-          </div>
+            Bienvenido,{" "}
+            <span style={{ color: "var(--color-primary-container)" }}>
+              Director.
+            </span>
+          </h1>
+          <p
+            className="text-sm mb-1"
+            style={{ color: "var(--color-on-surface-variant)" }}
+          >
+            {totalContratos
+              ? `Gestionás ${totalContratos} contrato${totalContratos !== 1 ? "s" : ""} activo${totalContratos !== 1 ? "s" : ""}.`
+              : "Creá tu primer contrato para comenzar."}
+          </p>
         </div>
+      </div>
 
-        {/* Fila 2: Cobrado + Vencidos */}
-        <div className="grid grid-cols-2 gap-3">
-          <MetricCard
-            label="Cobrado este mes"
-            value={formatMonto(cobradoMes)}
-            Icon={TrendingUp}
-            iconBg="rgba(0,106,101,0.10)"
-            iconColor="var(--color-secondary)"
-            small
-          />
-          <MetricCard
-            label="Pagos vencidos"
-            value={String(totalVencidos)}
-            Icon={AlertTriangle}
-            iconBg={
-              totalVencidos > 0
-                ? "rgba(124,88,0,0.12)"
-                : "rgba(0,36,65,0.06)"
-            }
-            iconColor={
-              totalVencidos > 0
-                ? "var(--color-tertiary)"
-                : "var(--color-on-surface-variant)"
-            }
-            alert={totalVencidos > 0}
-          />
-        </div>
-
-        {/* Próximos vencimientos */}
+      {/* Métricas — 4 columnas */}
+      <div className="grid grid-cols-4 gap-4 mb-6">
+        <MetricCard
+          label="Contratos activos"
+          value={String(totalContratos ?? 0)}
+          Icon={FileText}
+          iconBg="rgba(0,36,65,0.08)"
+          iconColor="var(--color-primary-container)"
+        />
+        {/* Salud portfolio */}
         <div
-          className="rounded-[2rem] p-5"
+          className="rounded-[2rem] p-5 flex flex-col justify-between"
           style={{
             background: "var(--color-surface-lowest)",
             boxShadow: "var(--shadow-card)",
           }}
         >
-          <div className="flex items-center justify-between mb-4">
+          <p
+            className="text-xs font-semibold uppercase tracking-wide mb-3"
+            style={{ color: "var(--color-on-surface-variant)" }}
+          >
+            Salud portfolio
+          </p>
+          <div className="flex items-end justify-between">
+            <div>
+              <p
+                className="text-2xl font-bold"
+                style={{
+                  fontFamily: "var(--font-jakarta), sans-serif",
+                  color: "var(--color-on-background)",
+                }}
+              >
+                {saludPct}%
+              </p>
+              <p
+                className="text-xs mt-0.5"
+                style={{ color: "var(--color-secondary)" }}
+              >
+                Al día
+              </p>
+            </div>
+            <SaludRing pct={saludPct} />
+          </div>
+        </div>
+        <MetricCard
+          label="Cobrado este mes"
+          value={formatMonto(cobradoMes)}
+          Icon={TrendingUp}
+          iconBg="rgba(0,106,101,0.10)"
+          iconColor="var(--color-secondary)"
+          small
+        />
+        <MetricCard
+          label="Pagos vencidos"
+          value={String(totalVencidos)}
+          Icon={AlertTriangle}
+          iconBg={
+            totalVencidos > 0
+              ? "rgba(124,88,0,0.12)"
+              : "rgba(0,36,65,0.06)"
+          }
+          iconColor={
+            totalVencidos > 0
+              ? "var(--color-tertiary)"
+              : "var(--color-on-surface-variant)"
+          }
+          alert={totalVencidos > 0}
+        />
+      </div>
+
+      {/* Fila inferior: próximos vencimientos + banner */}
+      <div className="grid grid-cols-3 gap-4">
+        {/* Próximos vencimientos — 2 cols */}
+        <div
+          className="col-span-2 rounded-[2rem] p-6"
+          style={{
+            background: "var(--color-surface-lowest)",
+            boxShadow: "var(--shadow-card)",
+          }}
+        >
+          <div className="flex items-center justify-between mb-5">
             <div className="flex items-center gap-2">
               <Clock
                 size={16}
@@ -181,6 +181,15 @@ export default async function DashboardPage() {
               >
                 Próximos vencimientos
               </p>
+              <span
+                className="text-xs px-2 py-0.5 rounded-full font-medium ml-1"
+                style={{
+                  background: "rgba(0,36,65,0.06)",
+                  color: "var(--color-on-surface-variant)",
+                }}
+              >
+                7 días
+              </span>
             </div>
             <Link
               href="/contratos"
@@ -193,7 +202,7 @@ export default async function DashboardPage() {
 
           {proximosVencimientos.length === 0 ? (
             <p
-              className="text-sm text-center py-4"
+              className="text-sm text-center py-6"
               style={{ color: "var(--color-on-surface-variant)" }}
             >
               No hay vencimientos en los próximos 7 días
@@ -207,7 +216,8 @@ export default async function DashboardPage() {
                 return (
                   <div
                     key={p.id}
-                    className="flex items-center justify-between gap-3"
+                    className="flex items-center justify-between gap-4 py-2"
+                    style={{ borderBottom: "1px solid rgba(15,58,95,0.05)" }}
                   >
                     <div className="flex items-center gap-3 min-w-0">
                       <div
@@ -231,8 +241,7 @@ export default async function DashboardPage() {
                           className="text-xs"
                           style={{ color: "var(--color-on-surface-variant)" }}
                         >
-                          Cuota #{p.numero_cuota} ·{" "}
-                          {formatFecha(p.fecha_vencimiento)}
+                          Cuota #{p.numero_cuota} · {formatFecha(p.fecha_vencimiento)}
                         </p>
                       </div>
                     </div>
@@ -249,26 +258,108 @@ export default async function DashboardPage() {
           )}
         </div>
 
-        {/* Banner celebratorio */}
-        {totalVencidos === 0 && (totalContratos ?? 0) > 0 && (
+        {/* Panel derecho: acciones rápidas */}
+        <div className="flex flex-col gap-4">
+          {/* Banner celebratorio o de alerta */}
+          {totalVencidos === 0 && (totalContratos ?? 0) > 0 ? (
+            <div
+              className="rounded-[2rem] p-6 text-center"
+              style={{ background: "var(--color-tertiary-surface)" }}
+            >
+              <p
+                className="text-sm font-bold mb-1"
+                style={{
+                  fontFamily: "var(--font-jakarta), sans-serif",
+                  color: "var(--color-tertiary)",
+                }}
+              >
+                ¡Excelente gestión!
+              </p>
+              <p className="text-xs" style={{ color: "var(--color-tertiary)" }}>
+                Todos los contratos están al día.
+              </p>
+            </div>
+          ) : totalVencidos > 0 ? (
+            <div
+              className="rounded-[2rem] p-6"
+              style={{ background: "rgba(124,88,0,0.08)" }}
+            >
+              <p
+                className="text-sm font-bold mb-1"
+                style={{ color: "var(--color-tertiary)" }}
+              >
+                {totalVencidos} pago{totalVencidos !== 1 ? "s" : ""} vencido{totalVencidos !== 1 ? "s" : ""}
+              </p>
+              <p className="text-xs mb-3" style={{ color: "var(--color-tertiary)" }}>
+                Revisá los contratos con deuda pendiente.
+              </p>
+              <Link
+                href="/contratos"
+                className="text-xs font-semibold"
+                style={{ color: "var(--color-tertiary)" }}
+              >
+                Ir a contratos →
+              </Link>
+            </div>
+          ) : null}
+
+          {/* Acciones rápidas */}
           <div
-            className="rounded-[2rem] p-5 text-center"
-            style={{ background: "#fffbf0" }}
+            className="rounded-[2rem] p-6 flex-1"
+            style={{
+              background: "var(--color-surface-lowest)",
+              boxShadow: "var(--shadow-card)",
+            }}
           >
             <p
-              className="text-sm font-bold mb-1"
-              style={{
-                fontFamily: "var(--font-jakarta), sans-serif",
-                color: "var(--color-tertiary)",
-              }}
+              className="text-xs font-semibold uppercase tracking-wide mb-4"
+              style={{ color: "var(--color-on-surface-variant)" }}
             >
-              ¡Excelente gestión este mes!
+              Acciones rápidas
             </p>
-            <p className="text-xs" style={{ color: "var(--color-tertiary)" }}>
-              Todos los contratos están al día.
-            </p>
+            <div className="space-y-2">
+              <Link
+                href="/contratos/nuevo"
+                className="flex items-center gap-2 text-sm font-medium py-2"
+                style={{ color: "var(--color-primary-container)" }}
+              >
+                <span
+                  className="w-6 h-6 rounded-lg flex items-center justify-center text-xs font-bold"
+                  style={{ background: "rgba(15,58,95,0.10)" }}
+                >
+                  +
+                </span>
+                Nuevo contrato
+              </Link>
+              <Link
+                href="/contratos"
+                className="flex items-center gap-2 text-sm font-medium py-2"
+                style={{ color: "var(--color-on-surface-variant)" }}
+              >
+                <span
+                  className="w-6 h-6 rounded-lg flex items-center justify-center"
+                  style={{ background: "rgba(0,0,0,0.05)" }}
+                >
+                  <FileText size={12} />
+                </span>
+                Ver contratos
+              </Link>
+              <Link
+                href="/clientes"
+                className="flex items-center gap-2 text-sm font-medium py-2"
+                style={{ color: "var(--color-on-surface-variant)" }}
+              >
+                <span
+                  className="w-6 h-6 rounded-lg flex items-center justify-center"
+                  style={{ background: "rgba(0,0,0,0.05)" }}
+                >
+                  <TrendingUp size={12} />
+                </span>
+                Ver clientes
+              </Link>
+            </div>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
