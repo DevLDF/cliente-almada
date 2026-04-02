@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Plus, FileText, Building2, Warehouse } from "lucide-react";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { RenovarButton } from "@/components/contratos/RenovarButton";
+import { BotonDescargarPDF } from "@/components/shared/BotonDescargarPDF";
 import { calcularEstadoContrato } from "@/lib/contrato-utils";
 import type { EstadoContrato } from "@/lib/contrato-utils";
 
@@ -237,6 +238,7 @@ export default async function ContratosPage() {
                         nombre={locatario.nombre ?? ""}
                       />
                     )}
+                    <BotonDescargarPDF contratoId={c.id} variant="icon" />
                     <Link
                       href={`/contratos/${c.id}/calendario`}
                       className="text-xs font-medium"

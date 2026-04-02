@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { ArrowLeft, RefreshCw, AlertTriangle } from "lucide-react";
+import { BotonDescargarPDF } from "@/components/shared/BotonDescargarPDF";
 import {
   generarCalendarioAction,
   marcarPagadoAction,
@@ -116,6 +117,7 @@ export default function CalendarioPagos({ contrato, pagosIniciales }: Props) {
         </div>
 
         <div className="flex items-center gap-3">
+          <BotonDescargarPDF contratoId={contrato.id} variant="icon" />
           <a
             href={`/contratos/${contrato.id}/editar`}
             className="text-sm font-medium px-4 py-2 rounded-xl transition-colors"
