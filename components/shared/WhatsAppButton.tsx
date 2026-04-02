@@ -1,5 +1,7 @@
 "use client";
 
+import { siteConfig } from "@/config/site";
+
 interface Props {
   telefono: string;
   nombre: string;
@@ -25,7 +27,7 @@ export function WhatsAppButton({ telefono, nombre, fecha, numeroCuota, monto }: 
   const mensaje =
     fecha !== undefined && numeroCuota !== undefined && monto !== undefined
       ? `Hola ${nombre}, te recordamos que el ${fecha} vence la cuota ${numeroCuota} de tu alquiler por $${monto.toLocaleString("es-AR")}. Ante cualquier consulta, comunicate con nosotros.`
-      : `Hola ${nombre}, te contactamos de Almada & Cía.`;
+      : `Hola ${nombre}, te contactamos de ${siteConfig.name}.`;
 
   const url = `https://wa.me/${telefonoLimpio}?text=${encodeURIComponent(mensaje)}`;
 

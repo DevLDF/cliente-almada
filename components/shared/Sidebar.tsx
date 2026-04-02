@@ -6,15 +6,15 @@ import {
   LayoutDashboard,
   FileText,
   Users,
-  CalendarDays,
+  BarChart2,
 } from "lucide-react";
 import { siteConfig } from "@/config/site";
 
 const ITEMS = [
-  { href: "/",           label: "Dashboard",  Icon: LayoutDashboard },
-  { href: "/contratos",  label: "Contratos",  Icon: FileText        },
-  { href: "/clientes",   label: "Clientes",   Icon: Users           },
-  { href: "/calendario", label: "Calendario", Icon: CalendarDays    },
+  { href: "/",          label: "Dashboard", Icon: LayoutDashboard },
+  { href: "/contratos", label: "Contratos", Icon: FileText        },
+  { href: "/clientes",  label: "Clientes",  Icon: Users           },
+  { href: "/analytics", label: "Analytics", Icon: BarChart2       },
 ] as const;
 
 const AUTH_ROUTES = ["/login", "/auth"];

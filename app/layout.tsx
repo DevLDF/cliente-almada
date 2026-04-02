@@ -3,6 +3,7 @@ import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Sidebar from "@/components/shared/Sidebar";
+import MainWrapper from "@/components/layout/MainWrapper";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -33,9 +34,7 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-manrope), sans-serif" }}
       >
         <Sidebar />
-        <main className="flex-1 ml-60 min-h-screen" style={{ background: "var(--color-surface)" }}>
-          {children}
-        </main>
+        <MainWrapper>{children}</MainWrapper>
       </body>
     </html>
   );

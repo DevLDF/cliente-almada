@@ -140,6 +140,47 @@ export const duplicarContratoAction = createServerAction()
     return data;
   });
 
+// ── Renovar contrato ──────────────────────────────────────────
+// Crea una copia del contrato con fechaInicio en blanco para que
+// el usuario la complete en el wizard.
+
+export const renovarContratoAction = createServerAction()
+  .input(idContratoSchema)
+  .handler(async ({ input }) => {
+    const supabase = await createClient();
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) throw new Error("No autenticado");
+
+    const { data: original, error: fetchError } = await supabase
+      .from("contratos")
+      .select("*")
+      .eq("id", input.id)
+      .single();
+
+    if (fetchError) throw new Error(fetchError.message);
+
+    const dataOriginal = original.data as Record<string, unknown> & {
+      condiciones?: Record<string, unknown>;
+    };
+
+    const { data, error } = await supabase
+      .from("contratos")
+      .insert({
+        user_id: user.id,
+        nombre: `${original.nombre} (renovación)`,
+        tipo: original.tipo,
+        data: {
+          ...dataOriginal,
+          condiciones: { ...dataOriginal.condiciones, fechaInicio: "" },
+        },
+      })
+      .select("id")
+      .single();
+
+    if (error) throw new Error(error.message);
+    return data;
+  });
+
 // ── Eliminar contrato ─────────────────────────────────────────
 
 export const eliminarContratoAction = createServerAction()

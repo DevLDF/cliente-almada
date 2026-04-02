@@ -2,6 +2,18 @@ import { listarContratosAction } from "@/actions/contratos.actions";
 import Link from "next/link";
 import { Plus, FileText, Building2, Warehouse } from "lucide-react";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
+import { RenovarButton } from "@/components/contratos/RenovarButton";
+import { calcularEstadoContrato } from "@/lib/contrato-utils";
+import type { EstadoContrato } from "@/lib/contrato-utils";
+
+const ESTADO_CONFIG: Record<
+  EstadoContrato,
+  { label: string; bg: string; color: string }
+> = {
+  vigente:    { label: "Vigente",    bg: "rgba(0,106,101,0.10)", color: "var(--color-secondary)"         },
+  por_vencer: { label: "Por vencer", bg: "rgba(124,88,0,0.12)",  color: "var(--color-tertiary)"          },
+  vencido:    { label: "Vencido",    bg: "rgba(180,20,20,0.10)", color: "#b41414"                        },
+};
 
 const TIPO_CONFIG = {
   vivienda: {
@@ -124,7 +136,7 @@ export default async function ContratosPage() {
           <div
             className="grid items-center px-6 py-3 text-xs font-semibold uppercase tracking-wide"
             style={{
-              gridTemplateColumns: "40px 1fr 120px 160px 140px",
+              gridTemplateColumns: "40px 1fr 100px 110px 140px 160px",
               color: "var(--color-on-surface-variant)",
               borderBottom: "1px solid rgba(15,58,95,0.06)",
             }}
@@ -132,6 +144,7 @@ export default async function ContratosPage() {
             <span />
             <span>Contrato</span>
             <span>Tipo</span>
+            <span>Estado</span>
             <span>Actualizado</span>
             <span className="text-right">Acciones</span>
           </div>
@@ -144,13 +157,19 @@ export default async function ContratosPage() {
                 TIPO_CONFIG.vivienda;
               const { Icon } = config;
               const isLast = idx === contratos.length - 1;
-              const locatario = (c.data as { locatarios?: { nombre?: string; telefono?: string }[] })?.locatarios?.[0];
+              const data = c.data as {
+                locatarios?: { nombre?: string; telefono?: string }[];
+                condiciones?: { fechaInicio?: string; duracionMeses?: number };
+              };
+              const locatario = data?.locatarios?.[0];
+              const estado = calcularEstadoContrato(data?.condiciones);
+              const estadoConfig = estado ? ESTADO_CONFIG[estado] : null;
               return (
                 <div
                   key={c.id}
                   className="grid items-center px-6 py-4 transition-colors hover:bg-[rgba(15,58,95,0.02)]"
                   style={{
-                    gridTemplateColumns: "40px 1fr 120px 160px 140px",
+                    gridTemplateColumns: "40px 1fr 100px 110px 140px 160px",
                     borderBottom: isLast
                       ? "none"
                       : "1px solid rgba(15,58,95,0.05)",
@@ -186,6 +205,18 @@ export default async function ContratosPage() {
                     </span>
                   </div>
 
+                  {/* Badge estado */}
+                  <div>
+                    {estadoConfig && (
+                      <span
+                        className="text-xs px-2.5 py-1 rounded-full font-medium"
+                        style={{ background: estadoConfig.bg, color: estadoConfig.color }}
+                      >
+                        {estadoConfig.label}
+                      </span>
+                    )}
+                  </div>
+
                   {/* Fecha */}
                   <p
                     className="text-sm"
@@ -199,7 +230,7 @@ export default async function ContratosPage() {
                   </p>
 
                   {/* Acciones */}
-                  <div className="flex items-center justify-end gap-4">
+                  <div className="flex items-center justify-end gap-3">
                     {locatario && (
                       <WhatsAppButton
                         telefono={locatario.telefono ?? ""}
@@ -213,6 +244,9 @@ export default async function ContratosPage() {
                     >
                       Pagos
                     </Link>
+                    {(estado === "vencido" || estado === "por_vencer") && (
+                      <RenovarButton contratoId={c.id} />
+                    )}
                     <Link
                       href={`/contratos/${c.id}/editar`}
                       className="text-xs font-semibold"
