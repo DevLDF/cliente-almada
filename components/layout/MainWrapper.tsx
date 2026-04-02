@@ -10,7 +10,7 @@ export default function MainWrapper({ children }: { children: React.ReactNode })
 
   return (
     <main
-      className={`flex-1 min-h-screen${isAuth ? "" : " ml-60"}`}
+      className={`flex-1 min-h-screen${isAuth ? "" : " lg:ml-60"}`}
       style={{ background: "var(--color-surface)" }}
     >
       {children}

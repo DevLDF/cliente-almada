@@ -31,7 +31,7 @@ export default function Sidebar() {
 
   return (
     <aside
-      className="fixed left-0 top-0 h-screen w-60 flex flex-col z-50 shrink-0"
+      className="hidden lg:flex fixed left-0 top-0 h-screen w-60 flex-col z-50 shrink-0"
       style={{
         background: "var(--color-surface-lowest)",
         borderRight: "1px solid rgba(15,58,95,0.07)",

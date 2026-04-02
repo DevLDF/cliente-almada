@@ -46,6 +46,7 @@ export default function ContratoWizard({ contrato }: { contrato: ContratoRow }) 
   const router = useRouter();
   const [step, setStep] = useState(0);
   const [saving, setSaving] = useState(false);
+  const [saveError, setSaveError] = useState<string | null>(null);
 
   const defaults = emptyContrato(contrato.tipo);
   const initialData = { ...defaults, ...(contrato.data as Partial<FormValues>) };
@@ -76,6 +77,7 @@ export default function ContratoWizard({ contrato }: { contrato: ContratoRow }) 
     if (!valid) return;
 
     setSaving(true);
+    setSaveError(null);
     try {
       await saveCurrentStep();
       if (step === STEPS.length - 1) {
@@ -83,6 +85,8 @@ export default function ContratoWizard({ contrato }: { contrato: ContratoRow }) 
       } else {
         setStep((s) => s + 1);
       }
+    } catch {
+      setSaveError("No se pudo guardar. Revisá tu conexión e intentá de nuevo.");
     } finally {
       setSaving(false);
     }
@@ -154,6 +158,13 @@ export default function ContratoWizard({ contrato }: { contrato: ContratoRow }) 
           <div className="bg-white rounded-2xl border border-gray-200 p-6 sm:p-8">
             <CurrentStep tipo={contrato.tipo} />
           </div>
+
+          {/* Save error */}
+          {saveError && (
+            <div className="mt-4 px-4 py-3 rounded-lg text-sm" style={{ background: "#fef2f2", color: "#b91c1c", border: "1px solid #fecaca" }}>
+              {saveError}
+            </div>
+          )}
 
           {/* Navigation */}
           <div className="flex items-center justify-between mt-6">

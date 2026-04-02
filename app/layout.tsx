@@ -4,6 +4,7 @@ import "./globals.css";
 import { siteConfig } from "@/config/site";
 import Sidebar from "@/components/shared/Sidebar";
 import MainWrapper from "@/components/layout/MainWrapper";
+import MobileHeader from "@/components/layout/MobileHeader";
 
 const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
@@ -34,7 +35,10 @@ export default function RootLayout({
         style={{ fontFamily: "var(--font-manrope), sans-serif" }}
       >
         <Sidebar />
-        <MainWrapper>{children}</MainWrapper>
+        <MainWrapper>
+          <MobileHeader />
+          {children}
+        </MainWrapper>
       </body>
     </html>
   );
