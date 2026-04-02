@@ -16,9 +16,18 @@ export default async function CalendarioPage({ params }: Props) {
 
   const [pagos] = await listarPagosAction({ contrato_id: id });
 
+  const contratoData = contrato.data as { locatarios?: { nombre?: string; telefono?: string }[] } | null;
+  const locatario = contratoData?.locatarios?.[0];
+
   return (
     <CalendarioPagos
-      contrato={contrato}
+      contrato={{
+        id: contrato.id,
+        nombre: contrato.nombre,
+        tipo: contrato.tipo,
+        locatarioNombre: locatario?.nombre ?? "",
+        locatarioTelefono: locatario?.telefono ?? "",
+      }}
       pagosIniciales={(pagos ?? []) as PagoCalendario[]}
     />
   );

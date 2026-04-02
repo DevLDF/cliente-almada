@@ -9,11 +9,14 @@ import {
   desmarcarPagadoAction,
 } from "@/actions/pagos.actions";
 import type { PagoCalendario } from "@/validations/pago.schema";
+import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 
 interface ContratoRow {
   id: string;
   nombre: string;
   tipo: "vivienda" | "comercial" | "galpon";
+  locatarioNombre?: string;
+  locatarioTelefono?: string;
 }
 
 interface Props {
@@ -198,7 +201,7 @@ export default function CalendarioPagos({ contrato, pagosIniciales }: Props) {
           <div
             className="grid items-center px-6 py-3 text-xs font-semibold uppercase tracking-wide"
             style={{
-              gridTemplateColumns: "60px 1fr 160px 120px 140px",
+              gridTemplateColumns: "60px 1fr 160px 120px 170px",
               color: "var(--color-on-surface-variant)",
               borderBottom: "1px solid rgba(15,58,95,0.06)",
             }}
@@ -221,7 +224,7 @@ export default function CalendarioPagos({ contrato, pagosIniciales }: Props) {
                 key={pago.id}
                 className="grid items-center px-6 py-3.5 transition-colors"
                 style={{
-                  gridTemplateColumns: "60px 1fr 160px 120px 140px",
+                  gridTemplateColumns: "60px 1fr 160px 120px 170px",
                   borderBottom: isLast ? "none" : "1px solid rgba(15,58,95,0.05)",
                   background:
                     estado === "vencido"
@@ -266,7 +269,16 @@ export default function CalendarioPagos({ contrato, pagosIniciales }: Props) {
                   <EstadoBadge estado={estado} />
                 </div>
 
-                <div className="flex justify-end">
+                <div className="flex items-center justify-end gap-3">
+                  {contrato.locatarioTelefono !== undefined && estado !== "pagado" && (
+                    <WhatsAppButton
+                      telefono={contrato.locatarioTelefono}
+                      nombre={contrato.locatarioNombre ?? ""}
+                      fecha={formatFecha(pago.fecha_vencimiento)}
+                      numeroCuota={pago.numero_cuota}
+                      monto={pago.monto_calculado}
+                    />
+                  )}
                   {estado !== "pagado" ? (
                     <button
                       onClick={() => handleMarcarPagado(pago.id)}

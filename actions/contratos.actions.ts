@@ -40,7 +40,7 @@ export const listarContratosAction = createServerAction().handler(async () => {
   const supabase = await createClient();
   const { data, error } = await supabase
     .from("contratos")
-    .select("id, nombre, tipo, created_at, updated_at")
+    .select("id, nombre, tipo, created_at, updated_at, data")
     .order("updated_at", { ascending: false });
 
   if (error) throw new Error(error.message);

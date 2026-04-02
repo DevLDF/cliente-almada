@@ -1,6 +1,7 @@
 import { listarContratosAction } from "@/actions/contratos.actions";
 import Link from "next/link";
 import { Plus, FileText, Building2, Warehouse } from "lucide-react";
+import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 
 const TIPO_CONFIG = {
   vivienda: {
@@ -123,7 +124,7 @@ export default async function ContratosPage() {
           <div
             className="grid items-center px-6 py-3 text-xs font-semibold uppercase tracking-wide"
             style={{
-              gridTemplateColumns: "40px 1fr 120px 160px 120px",
+              gridTemplateColumns: "40px 1fr 120px 160px 140px",
               color: "var(--color-on-surface-variant)",
               borderBottom: "1px solid rgba(15,58,95,0.06)",
             }}
@@ -143,12 +144,13 @@ export default async function ContratosPage() {
                 TIPO_CONFIG.vivienda;
               const { Icon } = config;
               const isLast = idx === contratos.length - 1;
+              const locatario = (c.data as { locatarios?: { nombre?: string; telefono?: string }[] })?.locatarios?.[0];
               return (
                 <div
                   key={c.id}
                   className="grid items-center px-6 py-4 transition-colors hover:bg-[rgba(15,58,95,0.02)]"
                   style={{
-                    gridTemplateColumns: "40px 1fr 120px 160px 120px",
+                    gridTemplateColumns: "40px 1fr 120px 160px 140px",
                     borderBottom: isLast
                       ? "none"
                       : "1px solid rgba(15,58,95,0.05)",
@@ -198,6 +200,12 @@ export default async function ContratosPage() {
 
                   {/* Acciones */}
                   <div className="flex items-center justify-end gap-4">
+                    {locatario && (
+                      <WhatsAppButton
+                        telefono={locatario.telefono ?? ""}
+                        nombre={locatario.nombre ?? ""}
+                      />
+                    )}
                     <Link
                       href={`/contratos/${c.id}/calendario`}
                       className="text-xs font-medium"
