@@ -1,6 +1,6 @@
 import { listarContratosAction } from "@/actions/contratos.actions";
 import Link from "next/link";
-import { Plus, FileText, Building2, Warehouse } from "lucide-react";
+import { Plus, FileText, Building2, Warehouse, LayoutTemplate } from "lucide-react";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { RenovarButton } from "@/components/contratos/RenovarButton";
 import { BotonDescargarPDF } from "@/components/shared/BotonDescargarPDF";
@@ -239,6 +239,14 @@ export default async function ContratosPage() {
                       />
                     )}
                     <BotonDescargarPDF contratoId={c.id} variant="icon" />
+                    <Link
+                      href={`/contratos/${c.id}/editor`}
+                      title="Abrir editor"
+                      className="inline-flex items-center transition-opacity hover:opacity-70"
+                      style={{ color: "var(--color-on-surface-variant)" }}
+                    >
+                      <LayoutTemplate size={15} strokeWidth={1.8} />
+                    </Link>
                     <Link
                       href={`/contratos/${c.id}/calendario`}
                       className="text-xs font-medium"
